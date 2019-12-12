@@ -21,12 +21,12 @@ const connection = mongoose.connection;
 connection.once("open", () => {
   console.log("MongoDB conn. success");
 });
-const triggerEvents = require("./routes/triggerEvents");
+const loginEvent = require("./routes/loginEvent");
 const registerUsersdata = require("./routes/addRegisterUsers");
 const logoutUpdate = require("./routes/logoutUpdate");
 const loginFailed = require("./routes/loginFailed");
 const login = require("./routes/pageviewCount");
-app.use("/eventTrigger", triggerEvents);
+app.use("/loginEvent", loginEvent);
 app.use("/addUsers", registerUsersdata);
 app.use("/logout", logoutUpdate);
 app.use("/loginFailed", loginFailed);

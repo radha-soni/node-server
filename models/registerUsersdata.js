@@ -21,24 +21,26 @@ const eventsSchema = new Schema({
     unique: false,
     trim: true
   },
-  message: {
-    type: String,
-    required: true,
-    unique: false,
-    trim: true
-  },
+
   ip_address: {
     type: String,
-    required: true,
-    unique: false,
+    required: false,
+    unique: true,
     trim: true
   },
   location: {
     type: String,
-    required: true,
-    unique: false,
+    required: false,
+    unique: true,
     trim: true
   },
+  message: {
+    type: String,
+    required: false,
+    unique: true,
+    trim: true
+  },
+
   pageViewCount: {
     type: Number,
     required: true,

@@ -5,19 +5,28 @@ router.route("/").post((req, res) => {
   const email = req.body.email;
   const ip_address = req.body.ip_address;
   const location = req.body.location;
+  const message = req.body.message;
 
   events.findOneAndUpdate(
     { email },
-    { loggedInTime: new Date(), ip_address: ip_address, location: location },
+    {
+      loggedInTime: new Date(),
+      ip_address: ip_address,
+      location: location,
+      message: message
+    },
     function(doc, err) {
-      if (err) {
-        console.log("error");
-      } else {
+      if (doc) {
         console.log("stats added");
       }
     }
   );
-  res.json({ error: false, message: "loggedIn", ip_address: ip_address });
+  res.json({
+    error: false,
+    message: "loggedIn",
+    ip_address: ip_address,
+    location: location
+  });
 });
 
 module.exports = router;
