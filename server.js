@@ -25,12 +25,11 @@ const loginEvent = require("./routes/loginEvent");
 const registerUsersdata = require("./routes/addRegisterUsers");
 const logoutUpdate = require("./routes/logoutUpdate");
 const loginFailed = require("./routes/loginFailed");
-const login = require("./routes/pageviewCount");
+
 app.use("/loginEvent", loginEvent);
 app.use("/addUsers", registerUsersdata);
 app.use("/logout", logoutUpdate);
 app.use("/loginFailed", loginFailed);
-app.use("/login", login);
 
 app.listen(port, () => {
   console.log("Server is running : " + port);

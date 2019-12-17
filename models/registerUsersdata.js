@@ -9,44 +9,13 @@ const eventsSchema = new Schema({
     unique: true,
     trim: true
   },
-  loggedInTime: {
-    type: String,
-    required: true,
-    unique: false,
-    trim: true
-  },
-  loggedOutTime: {
-    type: String,
-    required: true,
-    unique: false,
-    trim: true
-  },
-
-  ip_address: {
-    type: String,
-    required: false,
-    unique: true,
-    trim: true
-  },
-  location: {
-    type: String,
-    required: false,
-    unique: true,
-    trim: true
-  },
-  message: {
-    type: String,
-    required: false,
-    unique: true,
-    trim: true
-  },
-
-  pageViewCount: {
-    type: Number,
-    required: true,
-    unique: false,
-    trim: true
-  }
+  loggedInTime: [String],
+  loggedOutTime: [String],
+  ip_address: [String],
+  location: [String],
+  message: [String],
+  platform: [String],
+  pageViewCount: Number
 });
 
 const events = mongoose.model("events", eventsSchema);

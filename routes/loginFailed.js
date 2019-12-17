@@ -6,15 +6,14 @@ router.route("/").post((req, res) => {
   const message = req.body.message;
   console.log(message);
   if (message === "Invalid password") {
-    events.findOneAndUpdate(
-      { email },
-      { message: "Login failed :" + " " + message + " " + new Date() },
-      function(doc, err) {
-        if (doc) {
-          console.log("stats added");
-        }
+    events.findOneAndUpdate({ email }, { message: message }, function(
+      doc,
+      err
+    ) {
+      if (doc) {
+        console.log("stats added");
       }
-    );
+    });
     res.json({ error: true, message: message });
   } else {
     console.log("error");

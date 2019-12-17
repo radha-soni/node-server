@@ -3,6 +3,7 @@ let events = require("../models/registerUsersdata");
 
 router.route("/").post((req, res) => {
   const email = req.body.email;
+  const platform = req.body.platform;
 
   events
     .find()
@@ -12,10 +13,13 @@ router.route("/").post((req, res) => {
       if (email) {
         newUser = new events({
           email,
-          loggedInTime: "N/A",
-          loggedOutTime: "N/A",
-          message: "",
-          pageViewCount: 0
+          loggedInTime: [],
+          loggedOutTime: [],
+          ip_address: [],
+          location: [],
+          message: [],
+          pageViewCount: 0,
+          platform: platform
         });
       }
 

@@ -6,15 +6,24 @@ router.route("/").post((req, res) => {
   const ip_address = req.body.ip_address;
   const location = req.body.location;
   const message = req.body.message;
+  const platform = req.body.platform;
 
   events.findOneAndUpdate(
     { email },
     {
-      loggedInTime: new Date(),
-      ip_address: ip_address,
-      location: location,
-      message: message
+      $push: {
+        loggedInTime: new Date(),
+        ip_address: ip_address,
+        location: location,
+        message: message,
+        platform: platform
+      },
+
+      $inc: {
+        pageViewCount: 1
+      }
     },
+
     function(doc, err) {
       if (doc) {
         console.log("stats added");
@@ -23,9 +32,7 @@ router.route("/").post((req, res) => {
   );
   res.json({
     error: false,
-    message: "loggedIn",
-    ip_address: ip_address,
-    location: location
+    message: "loggedInTime"
   });
 });
 
