@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+let events = require("./models/registerUsersdata");
 
 require("dotenv").config();
 
@@ -30,6 +31,17 @@ app.use("/loginEvent", loginEvent);
 app.use("/addUsers", registerUsersdata);
 app.use("/logout", logoutUpdate);
 app.use("/loginFailed", loginFailed);
+app.get("/users", (req, res) => {
+  events.find({}, function(err, docs) {
+    if (err) {
+      console.log("error");
+    } else {
+      console.log("success");
+    }
+
+    res.send(docs);
+  });
+});
 
 app.listen(port, () => {
   console.log("Server is running : " + port);
