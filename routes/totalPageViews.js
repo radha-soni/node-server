@@ -1,6 +1,7 @@
 const router = require("express").Router();
 let activity = require("../models/usersActivitySchema");
 let events = require("../models/registerUsersdata");
+const server = require("../server");
 
 router.route("/").post((req, res) => {
   const id = req.body.id;
@@ -10,18 +11,14 @@ router.route("/").post((req, res) => {
     docs.forEach(obj => {
       totalViews += obj.pageViewCount;
     });
+
     activity.findOneAndUpdate(
       { id },
       {
-        $set: {
-          totalViews
-        }
+        totalViews
       },
 
-      function(doc, err) {
-        if (doc) {
-          console.log("stats added");
-        }
+      function(err, docs) {
         activity.find({}, function(err, docs) {
           server.io.emit("pageView update", docs[0].totalViews);
         });
@@ -34,4 +31,5 @@ router.route("/").post((req, res) => {
     message: "updated"
   });
 });
+
 module.exports = router;

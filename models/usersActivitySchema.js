@@ -16,8 +16,7 @@ const userSchema = new Schema({
     default: 0
   },
   totalViews: {
-    type: Number,
-    default: 0
+    type: Number
   },
   other: {
     type: Number

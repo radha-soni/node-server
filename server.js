@@ -73,7 +73,7 @@ app.get("/totalViews", (req, res) => {
       console.log("success");
     }
 
-    res.send(docs[0].totalViews);
+    res.json(docs[0].totalViews);
   });
 });
 
