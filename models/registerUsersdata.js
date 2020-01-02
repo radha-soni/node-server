@@ -15,7 +15,9 @@ const eventsSchema = new Schema({
   location: [String],
   message: [String],
   platform: [String],
-  pageViewCount: Number
+  pageViewCount: Number,
+  loggedIn: Boolean,
+  totalViews: Number
 });
 
 const events = mongoose.model("events", eventsSchema);

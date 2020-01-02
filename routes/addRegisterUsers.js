@@ -19,7 +19,9 @@ router.route("/").post((req, res) => {
           location: [],
           message: [],
           pageViewCount: 0,
-          platform: platform
+          platform: platform,
+          loggedIn: true,
+          totalViews: 0
         });
       }
 

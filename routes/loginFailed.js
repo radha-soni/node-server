@@ -4,7 +4,7 @@ let events = require("../models/registerUsersdata");
 router.route("/").post((req, res) => {
   const email = req.body.email;
   const message = req.body.message;
-  console.log(message);
+
   if (message === "Invalid password") {
     events.findOneAndUpdate({ email }, { message: message }, function(
       doc,
